@@ -10,10 +10,7 @@ jobs:
   timeoutInMinutes: 120
   workspace:
     clean: outputs
-   
-  trigger:
-    - main
-
+  
   pool:
     vmImage: ubuntu-latest
 
