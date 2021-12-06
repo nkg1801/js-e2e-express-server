@@ -3,20 +3,27 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
-  
-trigger:
-- main
+jobs:
+- job: MyJob
+  displayName: My First Job
+  continueOnError: true
+  timeoutInMinutes: 120
+  workspace:
+    clean: outputs
+   
+  trigger:
+    - main
 
-pool:
-  vmImage: ubuntu-latest
+  pool:
+    vmImage: ubuntu-latest
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
+  steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '10.x'
+    displayName: 'Install Node.js'
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+  - script: |
+      npm install
+      npm run build
+    displayName: 'npm install and build'
