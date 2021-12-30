@@ -31,7 +31,7 @@ steps:
             {
               $name=$temp[$i]
               echo "this is $name file"
-              if ($name -like 'f1/*')  #if f1 is a subfolder under a folder use "- like '*/f1/*'"
+              if ($name -like 'folder1/*')  #if f1 is a subfolder under a folder use "- like '*/f1/*'"
               { 
                 ##achive folder f1 if it is changed.
                 ##Compress-Archive -Path $(system.defaultworkingdirectory)/f1 -DestinationPath $(Build.ArtifactStagingDirectory)/f1.zip
