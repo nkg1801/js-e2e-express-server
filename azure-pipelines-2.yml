@@ -44,12 +44,18 @@ steps:
                 Copy-Item -Path $name -Destination $(system.defaultworkingdirectory)\temp\folder1
                 Write-Host "##vso[task.setvariable variable=f1Flag]True"
               }
-              if ($name -like 'f2/*')
+              else if ($name -like 'f2/*')
               {
                 ##achive folder f2 if it is changed.
                 ##Compress-Archive -Path $(system.defaultworkingdirectory)/f2 -DestinationPath $(Build.ArtifactStagingDirectory)/f2.zip
                 ##set the flag variable f2Flag to true
+                New-Item -ItemType directory -Path $(system.defaultworkingdirectory)\temp\f2
+                Copy-Item -Path $name -Destination $(system.defaultworkingdirectory)\temp\f2
                 Write-Host "##vso[task.setvariable variable=f2Flag]True"
+              }
+              else
+              {
+                Copy-Item -Path $name -Destination $(system.defaultworkingdirectory)\temp
               }
             }
             ## create a temp folder to hold the changed files
