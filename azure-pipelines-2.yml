@@ -9,6 +9,13 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+##set flag variables to indicate if the folder is changed.
+
+variables:
+  f1Flag: false
+  f2Flag: false
+  f3Flag: false
+  
 steps:
 - task: PowerShell@2
   inputs:
