@@ -62,4 +62,4 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
-  condition: and(succeeded(), or(eq(variables.f1Flag, true), eq(variables.f2Flag, true), eq(variables.f3Flag, true)))
+  ## condition: and(succeeded(), or(eq(variables.f1Flag, true), eq(variables.f2Flag, true), eq(variables.f3Flag, true)))
