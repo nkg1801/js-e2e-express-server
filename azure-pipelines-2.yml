@@ -15,7 +15,7 @@ variables:
   f1Flag: false
   f2Flag: false
   f3Flag: false
-  
+
 steps:
 - task: PowerShell@2
   inputs:
@@ -62,4 +62,3 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
-  condition: and(succeeded(), or(eq(variables.f1Flag, true),eq(variables.f2Flag, true),eq(variables.f3Flag, true)))
