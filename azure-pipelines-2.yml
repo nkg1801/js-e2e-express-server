@@ -37,7 +37,7 @@ steps:
                 ##Compress-Archive -Path $(system.defaultworkingdirectory)/f1 -DestinationPath $(Build.ArtifactStagingDirectory)/f1.zip
                 
                 ##set the flag variable f1Flag to true
-                Write-Host "##vso[task.setvariable variable=f2Flag]true"
+                Write-Host "##vso[task.setvariable variable=f1Flag]True"
               }
               if ($name -like 'f2/*')
               {
@@ -62,3 +62,4 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+  condition: and(succeeded(), or(eq(variables.f1Flag, true), eq(variables.f2Flag, true), eq(variables.f3Flag, true)))
